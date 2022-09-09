@@ -211,4 +211,7 @@ class InMemoryStorage(Storage):
         return file.created_at
 
     def __eq__(self, other):
-        return self.filesystem == other.filesystem and self.base_url == other.base_url
+        return (
+            isinstance(other, InMemoryStorage)
+            and self.filesystem == other.filesystem and self.base_url == other.base_url
+        )
